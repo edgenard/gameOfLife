@@ -3,5 +3,14 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: __dirname + '/dist/'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'standard',
+        exclude: /(node_modules|dist)/
+      }
+    ]
   }
 }
