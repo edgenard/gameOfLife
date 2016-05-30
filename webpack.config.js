@@ -5,11 +5,21 @@ module.exports = {
     path: __dirname + '/dist/'
   },
   module: {
-    loaders: [
+    preLoaders: [
       {
         test: /\.jsx?$/,
         loader: 'standard',
         exclude: /(node_modules|dist)/
+      }
+    ],
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel',
+        exclude: /(node_modules|dist)/,
+        query: {
+          presets: ['es2015', 'stage-0']
+        }
       }
     ]
   }

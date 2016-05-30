@@ -1,1 +1,3 @@
-console.log('hello')
+import testCode from './js/basicModule.js'
+
+testCode()
