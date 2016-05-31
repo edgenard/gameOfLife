@@ -1,3 +1,1 @@
-export const testCode = (hi = 'hello') => {
-  console.log(hi)
-}
+export const add = (a, b) => a + b

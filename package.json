@@ -5,7 +5,8 @@
   "main": "bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack"
+    "start": "webpack",
+    "lint": "standard"
   },
   "author": "Emmanuel Genard",
   "license": "ISC",
@@ -23,5 +24,8 @@
     "standard": "^7.1.1",
     "standard-loader": "^4.0.0",
     "webpack": "^1.13.1"
+  },
+  "standard": {
+    "globals": ["describe", "it", "beforeEach", "afterEach"]
   }
 }
