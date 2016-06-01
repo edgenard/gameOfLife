@@ -1,6 +1,8 @@
 const path = require('path')
-const IN = path.resolve(__dirname, '/src/index.js')
-const OUT = path.resolve(__dirname, 'dist')
+const JS_ENTRY = path.resolve('./src/index.js')
+// const CSS_ENTRY = path.resolve(__dirname, './src/styles.css')
+const IN = JS_ENTRY
+const OUT = path.resolve('dist')
 
 module.exports = {
   devTool: 'eval-source-map',
@@ -8,6 +10,9 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: OUT
+  },
+  devServer: {
+    contentBase: OUT
   },
   module: {
     preLoaders: [

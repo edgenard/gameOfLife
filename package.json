@@ -6,8 +6,12 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register src/js",
     "test:karma": "karma run",
+    "karma-start": "karma start",
     "pretest": "npm run lint",
-    "start": "webpack",
+    "prestart": "npm run lint",
+    "start": "webpack-dev-server",
+    "prebuild": "npm run lint",
+    "build": "webpack",
     "lint": "standard"
   },
   "author": "Emmanuel Genard",
