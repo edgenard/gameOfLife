@@ -1,1 +1,4 @@
-require('./css/basic-styles');
+@import url('css/basic-styles.css');
+body {
+  background: red;
+}

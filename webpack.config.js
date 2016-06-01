@@ -1,7 +1,7 @@
 const path = require('path')
 const JS_ENTRY = path.resolve('./src/index.js')
-// const CSS_ENTRY = path.resolve(__dirname, './src/styles.css')
-const IN = JS_ENTRY
+const CSS_ENTRY = path.resolve('./src/styles.css')
+const IN = [JS_ENTRY, CSS_ENTRY]
 const OUT = path.resolve('dist')
 
 module.exports = {
@@ -30,6 +30,10 @@ module.exports = {
         query: {
           presets: ['es2015', 'stage-0']
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'
       }
     ]
   }
