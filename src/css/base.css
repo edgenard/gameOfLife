@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gill Sans", sans-serif;
+  background-color: #011936;
+  color: #82a3a1;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+}
+
+main > * {
+  border: 1px solid #c0dfa1;
+}
+
+
+.gridContainer {
+  width: 80vw;
+  padding-bottom: 3vw;
+}
+
+table {
+  background-color: transparent;
+}
+
+td {
+  border: 1px solid #82a3a1;
+}
+
+.alive {
+  background-color: #c0dfa1;
+}
+
+.dead {
+  background-color: #465362;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  padding: 1vw;
+}
+
+.controls button {
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 5px;
+  background-color: #c0dfa1;
+  color: #011936;
+  border: 1px solid #465362;
+}
+
+.controls button:hover {
+  background-color: #011936;
+  color: #c0dfa1;
+}
