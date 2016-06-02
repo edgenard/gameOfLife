@@ -5,7 +5,7 @@
   "main": "bundle.js",
   "scripts": {
     "pretest": "npm run lint",
-    "test": "mocha --compilers js:babel-register src/js",
+    "test": "mocha --compilers js:babel-register tests/js",
     "pretest-karma": "npm run lint",
     "test-karma": "karma run",
     "karma-start": "karma start",
