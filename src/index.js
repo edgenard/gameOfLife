@@ -1,4 +1,7 @@
-// import {add} from './js/basicModule.js'
+import {buildGrid, attachElement} from './js/buildGrid.js'
 
-// console.log(add(2, 3))
-//
+const initialize = () => {
+  attachElement('#gridContainer', buildGrid())
+}
+
+window.onload = initialize

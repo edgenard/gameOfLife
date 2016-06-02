@@ -12,3 +12,5 @@ export const buildGrid = (rows = 24, cols = 24) => {
 
   return table
 }
+
+export const attachElement = (selector, element) => document.querySelector(selector).appendChild(element)

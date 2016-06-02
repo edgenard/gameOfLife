@@ -12,7 +12,7 @@ module.exports = {
     path: OUT
   },
   devServer: {
-    contentBase: OUT
+    contentBase: ''
   },
   module: {
     preLoaders: [

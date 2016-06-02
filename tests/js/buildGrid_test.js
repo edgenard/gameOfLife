@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {buildGrid} from '../../src/js/buildGrid.js'
+import {buildGrid, attachElement} from '../../src/js/buildGrid.js'
 
 describe('Building Grid', () => {
   it('returns a table element', () => {
@@ -21,5 +21,21 @@ describe('Building Grid', () => {
     const columns = firstRow.children
 
     assert.equal(columns.length, 24)
+  })
+})
+
+describe('Attaching grid', () => {
+  let section
+  beforeEach(() => {
+    section = document.createElement('section')
+    section.setAttribute('id', 'gridContainer')
+    document.body.appendChild(section)
+  })
+
+  it('attaches the grid to element with given selector', () => {
+    const grid = buildGrid()
+    attachElement('#gridContainer', grid)
+
+    assert.isTrue(section.contains(grid))
   })
 })
