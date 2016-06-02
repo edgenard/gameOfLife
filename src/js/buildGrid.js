@@ -6,7 +6,7 @@ export const buildGrid = (rows = 24, cols = 24) => {
     table.appendChild(tr)
     for (let j = 0; j < cols; j++) {
       let td = document.createElement('td')
-      td.className = 'dead'
+      td.classList.add('dead', 'cell')
       td.setAttribute('id', `${i}_${j}`)
       tr.appendChild(td)
     }

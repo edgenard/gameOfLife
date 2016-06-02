@@ -27,7 +27,14 @@ describe('Building Grid', () => {
     const grid = buildGrid()
     const cell = grid.children[0].children[0]
 
-    assert.equal(cell.className, 'dead')
+    assert.isTrue(cell.classList.contains('dead'))
+  })
+
+  it('cell has a class of cell', () => {
+    const grid = buildGrid()
+    const cell = grid.children[0].children[0]
+
+    assert.isTrue(cell.classList.contains('cell'))
   })
 
   it('cell the id of row and col', () => {
