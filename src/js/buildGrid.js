@@ -7,7 +7,7 @@ export const buildGrid = (rows = 24, cols = 24) => {
     for (let j = 0; j < cols; j++) {
       let td = document.createElement('td')
       td.className = 'dead'
-      td.setAttribute('id', `${i}-${j}`)
+      td.setAttribute('id', `${i}_${j}`)
       tr.appendChild(td)
     }
   }

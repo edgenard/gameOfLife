@@ -34,7 +34,7 @@ describe('Building Grid', () => {
     const grid = buildGrid()
     const cell = grid.children[0].children[0]
 
-    assert.equal(cell.getAttribute('id'), '0-0')
+    assert.equal(cell.getAttribute('id'), '0_0')
   })
 })
 
