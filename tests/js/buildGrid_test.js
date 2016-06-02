@@ -22,6 +22,20 @@ describe('Building Grid', () => {
 
     assert.equal(columns.length, 24)
   })
+
+  it('a cell has an initial class of dead', () => {
+    const grid = buildGrid()
+    const cell = grid.children[0].children[0]
+
+    assert.equal(cell.className, 'dead')
+  })
+
+  it('cell the id of row and col', () => {
+    const grid = buildGrid()
+    const cell = grid.children[0].children[0]
+
+    assert.equal(cell.getAttribute('id'), '0-0')
+  })
 })
 
 describe('Attaching grid', () => {
