@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import {assert} from 'chai'
 import {buildGrid, attachElement} from '../../src/js/buildGrid.js'
 import {addCellHandler} from '../../src/js/clickHandlers.js'
@@ -11,7 +12,7 @@ describe('Clicking a cell', function () {
     addCellHandler('.cell')
   })
 
-  it('clicking a dead cell make it alive', () => {
+  it.only('clicking a dead cell make it alive', () => {
     const cell = document.getElementById('11_10')
 
     cell.click()

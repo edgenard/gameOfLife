@@ -6,7 +6,8 @@ export const buildGrid = (rows = 24, cols = 24) => {
     table.appendChild(tr)
     for (let j = 0; j < cols; j++) {
       let td = document.createElement('td')
-      td.classList.add('dead', 'cell')
+      td.classList.add('dead')
+      td.classList.add('cell')// IE11 does not support two arguments for add
       td.setAttribute('id', `${i}_${j}`)
       tr.appendChild(td)
     }

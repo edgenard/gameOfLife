@@ -1,7 +1,7 @@
 const path = require('path')
 const JS_ENTRY = path.resolve('./src/index.js')
 const CSS_ENTRY = path.resolve('./src/styles.css')
-const IN = [JS_ENTRY, CSS_ENTRY]
+const IN = ['babel-polyfill', JS_ENTRY, CSS_ENTRY]
 const OUT = path.resolve('dist')
 
 module.exports = {
