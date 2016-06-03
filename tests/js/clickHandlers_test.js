@@ -12,7 +12,7 @@ describe('Clicking a cell', function () {
     addCellHandler('.cell')
   })
 
-  it.only('clicking a dead cell make it alive', () => {
+  it('clicking a dead cell make it alive', () => {
     const cell = document.getElementById('11_10')
 
     cell.click()
