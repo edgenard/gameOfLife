@@ -52,11 +52,20 @@ describe('Clicking Buttons', () => {
   afterEach(() => {
     document.body.removeChild(document.getElementById('fixture'))
   })
-  it('clicking "Play" changes the text to "Pause"', () => {
+  it('clicking "Start" changes the text to "Pause"', () => {
     const playButton = document.getElementById('start')
 
     playButton.click()
 
     assert.equal(playButton.innerText, 'Pause')
+  })
+
+  it('clicking "Pause" changes the text "Continue"', () => {
+    const playButton = document.querySelector('#start')
+
+    playButton.click()
+    playButton.click()
+
+    assert.equal(playButton.innerText, 'Continue')
   })
 })

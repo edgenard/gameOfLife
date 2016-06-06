@@ -18,7 +18,16 @@ export const addCellHandler = (selector) => {
 }
 
 const playButtonHandler = function (e) {
-  this.innerText = 'Pause'
+  switch (this.innerText) {
+    case 'Start':
+      this.innerText = 'Pause'
+      break
+    case 'Pause':
+      this.innerText = 'Continue'
+      break
+    default:
+      return
+  }
 }
 
 export const addPlayHandler = (selector) => {
