@@ -16,3 +16,12 @@ export const addCellHandler = (selector) => {
     cell.onclick = clickCellHandler
   })
 }
+
+const playButtonHandler = function (e) {
+  this.innerText = 'Pause'
+}
+
+export const addPlayHandler = (selector) => {
+  let playButton = document.querySelector(selector)
+  playButton.onclick = playButtonHandler
+}
