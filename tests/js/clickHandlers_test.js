@@ -12,6 +12,10 @@ describe('Clicking a cell', function () {
     addCellHandler('.cell')
   })
 
+  afterEach(() => {
+    document.body.removeChild(document.querySelector('#gridContainer'))
+  })
+
   it('clicking a dead cell make it alive', () => {
     const cell = document.getElementById('11_10')
 
