@@ -68,4 +68,14 @@ describe('Clicking Buttons', () => {
 
     assert.equal(playButton.innerText, 'Continue')
   })
+
+  it('clicking "Continue" changes text to "Pause"', () => {
+    const playButton = document.querySelector('#start')
+
+    playButton.click()
+    playButton.click()
+    playButton.click()
+
+    assert.equal(playButton.innerText, 'Pause')
+  })
 })

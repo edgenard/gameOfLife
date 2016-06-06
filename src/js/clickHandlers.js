@@ -26,7 +26,7 @@ const playButtonHandler = function (e) {
       this.innerText = 'Continue'
       break
     default:
-      return
+      this.innerText = 'Pause'
   }
 }
 
