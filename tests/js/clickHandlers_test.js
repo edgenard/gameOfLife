@@ -30,3 +30,13 @@ describe('Clicking a cell', function () {
     assert.isFalse(cell.classList.contains('alive'))
   })
 })
+
+describe('Clicking Buttons', () => {
+  it('clicking "Play" changes the text to "Pause"', () => {
+    const playButton = document.getElementById('start')
+
+    playButton.click()
+
+    assert.equal(playButton.innerHtml, 'Pause')
+  })
+})
