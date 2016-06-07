@@ -30,7 +30,19 @@ const playButtonHandler = function (e) {
   }
 }
 
+const clearButtonHandler = function (e, playButton) {
+  playButton.innerText = 'Start'
+}
+
 export const addPlayHandler = (selector) => {
   let playButton = document.querySelector(selector)
   playButton.onclick = playButtonHandler
+}
+
+export const addClearHandler = (clearSelector, playSelector) => {
+  const clearButton = document.querySelector(clearSelector)
+  const playButton = document.querySelector(playSelector)
+  clearButton.addEventListener('click', (e) => {
+    clearButtonHandler(e, playButton)
+  })
 }

@@ -1,7 +1,7 @@
 import 'babel-polyfill'
 import {assert} from 'chai'
 import {buildGrid, attachElement} from '../../src/js/buildGrid.js'
-import {addCellHandler, addPlayHandler} from '../../src/js/clickHandlers.js'
+import {addCellHandler, addPlayHandler, addClearHandler} from '../../src/js/clickHandlers.js'
 
 describe('Clicking a cell', function () {
   beforeEach(() => {
@@ -47,6 +47,7 @@ describe('Clicking Buttons', () => {
     </section>`
     document.body.innerHTML = fixture
     addPlayHandler('#start')
+    addClearHandler('#clear', '#start')
   })
 
   afterEach(() => {
@@ -77,5 +78,15 @@ describe('Clicking Buttons', () => {
     playButton.click()
 
     assert.equal(playButton.innerText, 'Pause')
+  })
+
+  it('clicking "Clear" changes "Pause" to "Start" ', () => {
+    const playButton = document.querySelector('#start')
+    const clearButton = document.querySelector('#clear')
+
+    playButton.click()
+    clearButton.click()
+
+    assert.equal(playButton.innerText, 'Start')
   })
 })
