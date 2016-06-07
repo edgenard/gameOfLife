@@ -1,4 +1,4 @@
-export const buildGrid = (rows = 24, cols = 24) => {
+export const buildTable = (rows = 24, cols = 24) => {
   let table = document.createElement('table')
 
   for (let i = 0; i < rows; i++) {

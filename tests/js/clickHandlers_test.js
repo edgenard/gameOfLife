@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 import {assert} from 'chai'
-import {buildGrid, attachElement} from '../../src/js/buildGrid.js'
+import {buildTable, attachElement} from '../../src/js/buildTable.js'
 import {addCellHandler, addPlayHandler, addClearHandler} from '../../src/js/clickHandlers.js'
 
 describe('Clicking a cell', function () {
@@ -8,7 +8,7 @@ describe('Clicking a cell', function () {
     const section = document.createElement('section')
     section.setAttribute('id', 'gridContainer')
     document.body.appendChild(section)
-    attachElement('#gridContainer', buildGrid())
+    attachElement('#gridContainer', buildTable())
     addCellHandler('.cell')
   })
 

@@ -1,8 +1,8 @@
-import {buildGrid, attachElement} from './js/buildGrid.js'
+import {buildTable, attachElement} from './js/buildGrid.js'
 import {addCellHandler, addPlayHandler, addClearHandler} from './js/clickHandlers.js'
 
 const initialize = () => {
-  attachElement('#gridContainer', buildGrid())
+  attachElement('#gridContainer', buildTable())
   addCellHandler('.cell')
   addPlayHandler('#start')
   addClearHandler('#clear', '#start')
