@@ -34,4 +34,11 @@ describe('Grid', () => {
 
     assert.deepEqual(newGrid, arrayOfArrays)
   })
+
+  it('produces a new grid - no mutation', () => {
+    const grid = resetGrid(buildGrid(3, 3))
+    const newGrid = changeCellState(grid, [1, 1])
+
+    assert.notDeepEqual(newGrid, grid)
+  })
 })
