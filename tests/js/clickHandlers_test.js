@@ -1,19 +1,21 @@
 import {assert} from 'chai'
 import {buildTable, attachElement} from '../../src/js/buildTable.js'
-import {buildGrid} from '../../src/js/life.js'
+import {buildGrid, changeCellState, resetGrid} from '../../src/js/life.js'
 import {addCellHandler, addPlayHandler, addClearHandler} from '../../src/js/clickHandlers.js'
 
 describe('Clicking a cell', function () {
+  let section
   beforeEach(() => {
-    const section = document.createElement('section')
+    section = document.createElement('section')
     section.setAttribute('id', 'gridContainer')
     document.body.appendChild(section)
-    attachElement('#gridContainer', buildTable(buildGrid(24, 24)))
-    addCellHandler('.cell')
+    const grid = resetGrid(buildGrid(24, 24))
+    attachElement('#gridContainer', buildTable(grid))
+    addCellHandler({selector: '.cell', grid, changeCellState})
   })
 
   afterEach(() => {
-    document.body.removeChild(document.querySelector('#gridContainer'))
+    document.body.removeChild(section)
   })
 
   it('clicking a dead cell make it alive', () => {
