@@ -1,0 +1,6 @@
+Next Steps
+
+- Clicking a cell should update the grid
+  Should grid be made when game is initialized?
+  How will the clickHandlers pass on the message to the grid.
+  Probably going to need a updateTable function that draws the grid. But I already have update the look of the grid when it is clicked, maybe instead of doing that the click on the cell  calls changeCellState which leads to a new grid and then calls updateTable which will draw the 

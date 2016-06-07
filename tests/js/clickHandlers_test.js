@@ -1,5 +1,6 @@
 import {assert} from 'chai'
 import {buildTable, attachElement} from '../../src/js/buildTable.js'
+import {buildGrid} from '../../src/js/life.js'
 import {addCellHandler, addPlayHandler, addClearHandler} from '../../src/js/clickHandlers.js'
 
 describe('Clicking a cell', function () {
@@ -7,7 +8,7 @@ describe('Clicking a cell', function () {
     const section = document.createElement('section')
     section.setAttribute('id', 'gridContainer')
     document.body.appendChild(section)
-    attachElement('#gridContainer', buildTable())
+    attachElement('#gridContainer', buildTable(buildGrid(24, 24)))
     addCellHandler('.cell')
   })
 

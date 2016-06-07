@@ -1,17 +1,17 @@
-export const buildTable = (rows = 24, cols = 24) => {
+export const buildTable = (grid) => {
   let table = document.createElement('table')
 
-  for (let i = 0; i < rows; i++) {
+  grid.forEach((row, rindex) => {
     let tr = document.createElement('tr')
     table.appendChild(tr)
-    for (let j = 0; j < cols; j++) {
+    row.forEach((col, cindex) => {
       let td = document.createElement('td')
       td.classList.add('dead')
-      td.classList.add('cell')// IE11 does not support two arguments for add
-      td.setAttribute('id', `${i}_${j}`)
+      td.classList.add('cell')
+      td.setAttribute('id', `${rindex}_${cindex}`)
       tr.appendChild(td)
-    }
-  }
+    })
+  })
 
   return table
 }
