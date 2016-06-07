@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {buildGrid, resetGrid} from '../../src/js/life.js'
+import {buildGrid, resetGrid, changeCellState} from '../../src/js/life.js'
 
 describe('Grid', () => {
   it('builds grid', () => {
@@ -20,5 +20,18 @@ describe('Grid', () => {
     ]
 
     assert.deepEqual(resetGrid(buildGrid(3, 3)), arrayOfArrays)
+  })
+
+  it('changes a cells state', () => {
+    const arrayOfArrays = [
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+
+    const grid = resetGrid(buildGrid(3, 3))
+    const newGrid = changeCellState(grid, [1, 1])
+
+    assert.deepEqual(newGrid, arrayOfArrays)
   })
 })
