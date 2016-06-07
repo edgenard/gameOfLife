@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import {assert} from 'chai'
 import {buildTable, attachElement} from '../../src/js/buildTable.js'
 import {addCellHandler, addPlayHandler, addClearHandler} from '../../src/js/clickHandlers.js'
