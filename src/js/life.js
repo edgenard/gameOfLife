@@ -9,7 +9,7 @@ export const resetGrid = (grid) => {
 
 export const changeCellState = (grid, pos) => {
   const [row, col] = pos
-  const newValue = 1
+  const newValue = grid[row][col] === 1 ? 0 : 1
   return [...grid.slice(0, row),
     [...grid[row].slice(0, col), newValue, ...grid[row].slice(col + 1)],
     ...grid.slice(row + 1)

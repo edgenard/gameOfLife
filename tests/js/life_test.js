@@ -22,7 +22,7 @@ describe('Grid', () => {
     assert.deepEqual(resetGrid(buildGrid(3, 3)), arrayOfArrays)
   })
 
-  it('changes a cells state', () => {
+  it('changes a cells state from 0 to 1', () => {
     const arrayOfArrays = [
       [0, 0, 0],
       [0, 1, 0],
@@ -33,6 +33,21 @@ describe('Grid', () => {
     const newGrid = changeCellState(grid, [1, 1])
 
     assert.deepEqual(newGrid, arrayOfArrays)
+  })
+
+  it('changes cells state from 1 to 0', function () {
+    const oldGridState = [
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+    const newGridState = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
+
+    assert.deepEqual(changeCellState(oldGridState, [1, 1]), newGridState)
   })
 
   it('produces a new grid - no mutation', () => {
