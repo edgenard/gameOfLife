@@ -1,4 +1,4 @@
-export const buildTable = (grid) => {
+export const drawTable = (grid) => {
   let table = document.createElement('table')
 
   grid.forEach((row, rindex) => {

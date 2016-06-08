@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {buildGrid, resetGrid, changeCellState} from '../../src/js/life.js'
+import {buildGrid, resetGrid, changeCellState} from '../../src/js/grid.js'
 
 describe('Grid', () => {
   it('builds grid', () => {
