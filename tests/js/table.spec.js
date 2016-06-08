@@ -1,40 +1,8 @@
 import {assert} from 'chai'
-import {drawTable, attachElement} from '../../src/js/table.js'
+import {drawTable} from '../../src/js/table.js'
 import {buildGrid} from '../../src/js/grid.js'
 
-describe('Building Table', () => {
-  it('builds the table based on the grid', () => {
-    const table = drawTable(buildGrid(3, 3))
-    const rows = table.querySelectorAll('tr')
-    const cols = table.children[0].querySelectorAll('td')
-
-    assert.equal(rows.length, 3)
-    assert.equal(cols.length, 3)
-  })
-
-  it('a cell has an initial class of dead', () => {
-    const table = drawTable(buildGrid(3, 3))
-    const cell = table.children[0].children[0]
-
-    assert.isTrue(cell.classList.contains('dead'))
-  })
-
-  it('cell has a class of cell', () => {
-    const table = drawTable(buildGrid(3, 3))
-    const cell = table.children[0].children[0]
-
-    assert.isTrue(cell.classList.contains('cell'))
-  })
-
-  it('cell has the id of row and col', () => {
-    const table = drawTable(buildGrid(3, 3))
-    const cell = table.children[0].children[0]
-
-    assert.equal(cell.getAttribute('id'), '0_0')
-  })
-})
-
-describe('Attaching grid', () => {
+describe('Table', () => {
   let section
   beforeEach(() => {
     section = document.createElement('section')
@@ -45,11 +13,44 @@ describe('Attaching grid', () => {
   afterEach(() => {
     document.body.removeChild(section)
   })
+  it('builds the table based on the grid', () => {
+    drawTable({parent: section, grid: buildGrid(3, 3)})
+    const table = document.querySelector('table')
+    const rows = table.querySelectorAll('tr')
+    const cols = table.children[0].querySelectorAll('td')
 
-  it('attaches the grid to element with given selector', () => {
-    const table = drawTable(buildGrid(3, 3))
-    attachElement('#gridContainer', table)
+    assert.equal(rows.length, 3)
+    assert.equal(cols.length, 3)
+  })
+
+  it('table is attached to dom', () => {
+    drawTable({parent: section, grid: buildGrid(3, 3)})
+    const table = document.querySelector('table')
 
     assert.isTrue(section.contains(table))
+  })
+
+  it('a cell has an initial class of dead', () => {
+    drawTable({parent: section, grid: buildGrid(3, 3)})
+    const table = document.querySelector('table')
+    const cell = table.children[0].children[0]
+
+    assert.isTrue(cell.classList.contains('dead'))
+  })
+
+  it('cell has a class of cell', () => {
+    drawTable({parent: section, grid: buildGrid(3, 3)})
+    const table = document.querySelector('table')
+    const cell = table.children[0].children[0]
+
+    assert.isTrue(cell.classList.contains('cell'))
+  })
+
+  it('cell has the id of row and col', () => {
+    drawTable({parent: section, grid: buildGrid(3, 3)})
+    const table = document.querySelector('table')
+    const cell = table.children[0].children[0]
+
+    assert.equal(cell.getAttribute('id'), '0_0')
   })
 })

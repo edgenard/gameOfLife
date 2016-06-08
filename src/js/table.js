@@ -1,4 +1,4 @@
-export const drawTable = (grid) => {
+export const drawTable = ({grid, parent}) => {
   let table = document.createElement('table')
 
   grid.forEach((row, rindex) => {
@@ -13,8 +13,5 @@ export const drawTable = (grid) => {
     })
   })
 
-  return table
+  parent.appendChild(table)
 }
-
-export const attachElement = (selector, element) => document
-  .querySelector(selector).appendChild(element)

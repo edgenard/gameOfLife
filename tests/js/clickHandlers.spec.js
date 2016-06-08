@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {drawTable, attachElement} from '../../src/js/table.js'
+import {drawTable} from '../../src/js/table.js'
 import {buildGrid, changeCellState, resetGrid} from '../../src/js/grid.js'
 import {addCellHandler, addPlayHandler, addClearHandler} from '../../src/js/clickHandlers.js'
 
@@ -10,7 +10,7 @@ describe('Clicking a cell', function () {
     section.setAttribute('id', 'gridContainer')
     document.body.appendChild(section)
     const grid = resetGrid(buildGrid(24, 24))
-    attachElement('#gridContainer', drawTable(grid))
+    drawTable({parent: section, grid})
     addCellHandler({selector: '.cell', grid, changeCellState})
   })
 
