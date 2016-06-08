@@ -1,8 +1,13 @@
 Next Steps
 
-- Clicking a cell should update the grid
-  Should grid be made when game is initialized?
-  How will the clickHandlers pass on the message to the grid.
-  Probably going to need a updateTable function that draws the grid. But I already have update the look of the grid when it is clicked, maybe instead of doing that the click on the cell  calls changeCellState which leads to a new grid and then calls updateTable which will draw the
+drawTable function now draws a representation of the grid each time its called and attaches it to parent element
 
-  Tried to have a new grid each time, but it looks like the global grid doesn't update.
+What does clicking on a cell do now?
+ - Give a new grid with the cell updated from 0 to 1
+ - drawTable using new Grid(This means that drawTable needs to be changed to set a cell as alive or dead based on the grid and maybe instead of redrawing the whole table it should just redraw that specific cell, in that case I would update the grid but not redraw the table, just redraw a cell)
+  - Right now after clicking a cell the steps feel like
+    1. get new grid with cell toggled on or off
+    2. Update the individual cell in the html with a different class
+      to show that it is has been toggled(It seems this would deviate from the idea of having the view be direct representation of the model. Would just removing the old table view and redrawing it be a problem).
+
+When computing the next generation should a new grid be created each time we run into a cell whose state will change or collect all the cells that will change state and then update all the cells at once? This problem seems to exist whether or not I get a new grid anytime a cell changes or mutate the grid.

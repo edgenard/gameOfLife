@@ -30,6 +30,12 @@ describe('Table', () => {
     assert.isTrue(section.contains(table))
   })
 
+  it('returns the table', function () {
+    const table = drawTable({parent: section, grid: buildGrid(3, 3)})
+
+    assert.isDefined(table)
+  })
+
   it('a cell has an initial class of dead', () => {
     drawTable({parent: section, grid: buildGrid(3, 3)})
     const table = document.querySelector('table')

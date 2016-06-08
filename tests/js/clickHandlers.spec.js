@@ -1,7 +1,7 @@
 import {assert} from 'chai'
 import {drawTable} from '../../src/js/table.js'
-import {buildGrid, changeCellState, resetGrid} from '../../src/js/grid.js'
-import {addCellHandler, addPlayHandler, addClearHandler} from '../../src/js/clickHandlers.js'
+import {buildGrid, resetGrid} from '../../src/js/grid.js'
+import {addHandler, clickCellHandler, playButtonHandler, addClearHandler} from '../../src/js/clickHandlers.js'
 
 describe('Clicking a cell', function () {
   let section
@@ -11,14 +11,14 @@ describe('Clicking a cell', function () {
     document.body.appendChild(section)
     const grid = resetGrid(buildGrid(24, 24))
     drawTable({parent: section, grid})
-    addCellHandler({selector: '.cell', grid, changeCellState})
+    addHandler({selector: '.cell', handler: clickCellHandler})
   })
 
   afterEach(() => {
     document.body.removeChild(section)
   })
 
-  it('clicking a dead cell make it alive', () => {
+  it('clicking a cell changes its class', () => {
     const cell = document.getElementById('11_10')
 
     cell.click()
@@ -27,7 +27,7 @@ describe('Clicking a cell', function () {
     assert.isFalse(cell.classList.contains('dead'))
   })
 
-  it('clicking a live cell makes it dead', () => {
+  it('clicking cell twice changes it to the og class', () => {
     const cell = document.getElementById('20_0')
     cell.click()
     cell.click()
@@ -48,7 +48,7 @@ describe('Clicking Buttons', () => {
       </button>
     </section>`
     document.body.innerHTML = fixture
-    addPlayHandler('#start')
+    addHandler({selector: '#start', handler: playButtonHandler})
     addClearHandler('#clear', '#start')
   })
 
@@ -56,7 +56,7 @@ describe('Clicking Buttons', () => {
     document.body.removeChild(document.getElementById('fixture'))
   })
   it('clicking "Start" changes the text to "Pause"', () => {
-    const playButton = document.getElementById('start')
+    const playButton = document.querySelector('#start')
 
     playButton.click()
 

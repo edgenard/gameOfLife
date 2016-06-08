@@ -14,4 +14,6 @@ export const drawTable = ({grid, parent}) => {
   })
 
   parent.appendChild(table)
+
+  return table
 }

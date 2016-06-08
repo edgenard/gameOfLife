@@ -1,30 +1,27 @@
-const clickCellHandler = function (cell) {
-  if (cell.classList.contains('dead')) {
-    cell.classList.remove('dead')
-    cell.classList.add('alive')
-  } else if (cell.classList.contains('alive')) {
-    cell.classList.remove('alive')
-    cell.classList.add('dead')
+export const clickCellHandler = function () {
+  if (this.classList.contains('dead')) {
+    this.classList.remove('dead')
+    this.classList.add('alive')
+  } else if (this.classList.contains('alive')) {
+    this.classList.remove('alive')
+    this.classList.add('dead')
   }
 }
 
-const getPosition = (idString) => {
-  return idString.split('_').map(n => Number(n))
-}
+// const getPosition = (idString) => {
+//   return idString.split('_').map(n => Number(n))
+// }
 
-export const addCellHandler = ({selector, grid, changeCellState}) => {
-  let cells = document.querySelectorAll(selector)
-  cells = [...cells]
+export const addHandler = ({selector, handler, type = 'click'}) => {
+  let elements = document.querySelectorAll(selector)
+  elements = [...elements]
 
-  cells.forEach((cell) => {
-    cell.addEventListener('click', (e) => {
-      clickCellHandler(cell)
-      grid = changeCellState(grid, getPosition(cell.getAttribute('id')))
-    })
+  elements.forEach((element) => {
+    element.addEventListener(type, handler)
   })
 }
 
-const playButtonHandler = function (e) {
+export const playButtonHandler = function (e) {
   switch (this.innerText) {
     case 'Start':
       this.innerText = 'Pause'
