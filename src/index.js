@@ -1,14 +1,16 @@
-import {drawTable} from './js/table.js'
-import {addCellHandler, addPlayHandler, addClearHandler} from './js/clickHandlers.js'
-import {buildGrid, changeCellState, resetGrid} from './js/grid.js'
+import {gameOfLife} from './js/life.js'
 
 const initialize = () => {
-  let grid = resetGrid(buildGrid(24, 24))
-  drawTable({grid, parent: document.querySelector('#gridContainer')})
-  addCellHandler({selector: '.cell', grid, changeCellState})
-  addPlayHandler('#start')
-  addClearHandler('#clear', '#start')
-  window.onclick = function () { console.log(grid[0]) }
+  const life = gameOfLife({
+    size: {
+      rows: 24,
+      cols: 24
+    },
+    container: document.getElementById('gridContainer')
+  })
+
+  life.addClickCellHandler('.cell')
+  life.addClearButtonHandler('#clear', '#start')
 }
 
 window.onload = initialize
