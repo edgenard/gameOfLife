@@ -1,7 +1,7 @@
 import {assert} from 'chai'
 import {drawTable} from '../../src/js/table.js'
 import {buildGrid, resetGrid} from '../../src/js/grid.js'
-import {addHandler, clickCellHandler, playButtonHandler, addClearHandler} from '../../src/js/clickHandlers.js'
+import {clickCellHandler, playButtonHandler, clearButtonHandler} from '../../src/js/clickHandlers.js'
 
 describe('Clicking a cell', function () {
   let section, cell
@@ -38,6 +38,7 @@ describe('Clicking a cell', function () {
 })
 
 describe('Clicking Buttons', () => {
+  let playButton, clearButton
   beforeEach(() => {
     const fixture = `<section class="controls" id="fixture">
       <button id="start">
@@ -48,24 +49,24 @@ describe('Clicking Buttons', () => {
       </button>
     </section>`
     document.body.innerHTML = fixture
-    addHandler({selector: '#start', handler: playButtonHandler})
-    addClearHandler('#clear', '#start')
+    playButton = document.querySelector('#start')
+    playButton.addEventListener('click', () => { playButtonHandler(playButton) })
+    clearButton = document.querySelector('#clear')
+    clearButton.addEventListener('click', () => {
+      clearButtonHandler(clearButton, playButton)
+    })
   })
 
   afterEach(() => {
     document.body.removeChild(document.getElementById('fixture'))
   })
   it('clicking "Start" changes the text to "Pause"', () => {
-    const playButton = document.querySelector('#start')
-
     playButton.click()
 
     assert.equal(playButton.innerText, 'Pause')
   })
 
   it('clicking "Pause" changes the text "Continue"', () => {
-    const playButton = document.querySelector('#start')
-
     playButton.click()
     playButton.click()
 
@@ -73,8 +74,6 @@ describe('Clicking Buttons', () => {
   })
 
   it('clicking "Continue" changes text to "Pause"', () => {
-    const playButton = document.querySelector('#start')
-
     playButton.click()
     playButton.click()
     playButton.click()
@@ -83,7 +82,6 @@ describe('Clicking Buttons', () => {
   })
 
   it('clicking "Clear" changes "Pause" to "Start" ', () => {
-    const playButton = document.querySelector('#start')
     const clearButton = document.querySelector('#clear')
 
     playButton.click()

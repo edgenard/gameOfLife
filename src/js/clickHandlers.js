@@ -8,21 +8,6 @@ export const clickCellHandler = function (cell) {
   }
 }
 
-// const getPosition = (idString) => {
-//   return idString.split('_').map(n => Number(n))
-// }
-
-export const addHandler = ({selector, handler, type = 'click'}) => {
-  let elements = document.querySelectorAll(selector)
-  elements = [...elements]
-
-  elements.forEach((element) => {
-    element.addEventListener(type, () => {
-      handler(element)
-    })
-  })
-}
-
 export const playButtonHandler = function (button) {
   switch (button.innerText) {
     case 'Start':
@@ -36,19 +21,6 @@ export const playButtonHandler = function (button) {
   }
 }
 
-const clearButtonHandler = function (e, playButton) {
+export const clearButtonHandler = function (clearButton, playButton) {
   playButton.innerText = 'Start'
-}
-
-export const addPlayHandler = (selector) => {
-  let playButton = document.querySelector(selector)
-  playButton.onclick = playButtonHandler
-}
-
-export const addClearHandler = (clearSelector, playSelector) => {
-  const clearButton = document.querySelector(clearSelector)
-  const playButton = document.querySelector(playSelector)
-  clearButton.addEventListener('click', (e) => {
-    clearButtonHandler(e, playButton)
-  })
 }
