@@ -1,10 +1,10 @@
-export const clickCellHandler = function () {
-  if (this.classList.contains('dead')) {
-    this.classList.remove('dead')
-    this.classList.add('alive')
-  } else if (this.classList.contains('alive')) {
-    this.classList.remove('alive')
-    this.classList.add('dead')
+export const clickCellHandler = function (cell) {
+  if (cell.classList.contains('dead')) {
+    cell.classList.remove('dead')
+    cell.classList.add('alive')
+  } else if (cell.classList.contains('alive')) {
+    cell.classList.remove('alive')
+    cell.classList.add('dead')
   }
 }
 
@@ -17,20 +17,22 @@ export const addHandler = ({selector, handler, type = 'click'}) => {
   elements = [...elements]
 
   elements.forEach((element) => {
-    element.addEventListener(type, handler)
+    element.addEventListener(type, () => {
+      handler(element)
+    })
   })
 }
 
-export const playButtonHandler = function (e) {
-  switch (this.innerText) {
+export const playButtonHandler = function (button) {
+  switch (button.innerText) {
     case 'Start':
-      this.innerText = 'Pause'
+      button.innerText = 'Pause'
       break
     case 'Pause':
-      this.innerText = 'Continue'
+      button.innerText = 'Continue'
       break
     default:
-      this.innerText = 'Pause'
+      button.innerText = 'Pause'
   }
 }
 

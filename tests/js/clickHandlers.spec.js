@@ -4,14 +4,17 @@ import {buildGrid, resetGrid} from '../../src/js/grid.js'
 import {addHandler, clickCellHandler, playButtonHandler, addClearHandler} from '../../src/js/clickHandlers.js'
 
 describe('Clicking a cell', function () {
-  let section
+  let section, cell
   beforeEach(() => {
     section = document.createElement('section')
     section.setAttribute('id', 'gridContainer')
     document.body.appendChild(section)
     const grid = resetGrid(buildGrid(24, 24))
     drawTable({parent: section, grid})
-    addHandler({selector: '.cell', handler: clickCellHandler})
+    cell = document.getElementById('11_11')
+    cell.addEventListener('click', () => {
+      clickCellHandler(cell)
+    })
   })
 
   afterEach(() => {
@@ -19,8 +22,6 @@ describe('Clicking a cell', function () {
   })
 
   it('clicking a cell changes its class', () => {
-    const cell = document.getElementById('11_10')
-
     cell.click()
 
     assert.isTrue(cell.classList.contains('alive'))
@@ -28,7 +29,6 @@ describe('Clicking a cell', function () {
   })
 
   it('clicking cell twice changes it to the og class', () => {
-    const cell = document.getElementById('20_0')
     cell.click()
     cell.click()
 

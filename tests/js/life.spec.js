@@ -34,6 +34,7 @@ describe('Game of Life', () => {
   })
 
   it('clicking a cell updates the grid', () => {
+    newGame.addClickCellHandler('.cell')
     const cell = document.getElementById('1_1')
     cell.click()
 
@@ -43,6 +44,7 @@ describe('Game of Life', () => {
       [0, 0, 0]
     ]
 
+    assert.isTrue(cell.classList.contains('alive'))
     assert.deepEqual(newGame.getGrid(), grid)
   })
 })
