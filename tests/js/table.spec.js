@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {drawTable} from '../../src/js/table.js'
+import {drawTable, updateTable} from '../../src/js/table.js'
 import {buildGrid} from '../../src/js/grid.js'
 
 describe('Table', () => {
@@ -13,6 +13,7 @@ describe('Table', () => {
   afterEach(() => {
     document.body.removeChild(section)
   })
+
   it('builds the table based on the grid', () => {
     drawTable({parent: section, grid: buildGrid(3, 3)})
     const table = document.querySelector('table')
@@ -58,5 +59,29 @@ describe('Table', () => {
     const cell = table.children[0].children[0]
 
     assert.equal(cell.getAttribute('id'), '0_0')
+  })
+
+  describe('Updating Table', () => {
+    it('updates cells based on grid', () => {
+      const grid = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ]
+      let table = drawTable({
+        parent: section,
+        grid
+      })
+      const newGrid = [
+        [0, 0, 0],
+        [0, 1, 0],
+        [0, 0, 0]
+      ]
+      const cell = document.getElementById('1_1')
+
+      updateTable(table, newGrid)
+
+      assert.isTrue(cell.classList.contains('alive'))
+    })
   })
 })

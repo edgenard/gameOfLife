@@ -17,3 +17,25 @@ export const drawTable = ({grid, parent}) => {
 
   return table
 }
+
+export const updateTable = (table, newGrid) => {
+  const parent = table.parentNode
+  parent.removeChild(table)
+
+  newGrid.forEach((row, rIdx) => {
+    row.forEach((cell, cIdx) => {
+      let td = table.children[rIdx].children[cIdx]
+      if (cell === 1 && td.classList.contains('dead')) {
+        td.classList.remove('dead')
+        td.classList.add('alive')
+      } else if (td.classList.contains('alive')) {
+        td.classList.remove('alive')
+        td.classList.add('dead')
+      }
+    })
+  })
+
+  parent.appendChild(table)
+
+  return table
+}
