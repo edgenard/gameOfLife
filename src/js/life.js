@@ -1,11 +1,11 @@
 import {buildGrid, resetGrid, changeCellState} from './grid.js'
-import {drawTable} from './table.js'
+import {drawTable, updateTable} from './table.js'
 import {clickCellHandler, clearButtonHandler} from './clickHandlers.js'
 
 export const gameOfLife = ({size, container}) => {
   const {rows, cols} = size
   let grid = resetGrid(buildGrid(rows, cols))
-  drawTable({parent: container, grid})
+  let table = drawTable({parent: container, grid})
 
   return {
     getGrid: () => grid,
@@ -29,6 +29,7 @@ export const gameOfLife = ({size, container}) => {
       clearButton.addEventListener('click', () => {
         clearButtonHandler(clearButton, playButton)
         grid = resetGrid(grid)
+        table = updateTable(table, grid)
       })
     }
   }
