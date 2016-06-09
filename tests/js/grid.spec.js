@@ -57,3 +57,7 @@ describe('Grid', () => {
     assert.notDeepEqual(newGrid, grid)
   })
 })
+
+describe('Next Generation', () => {
+  it('returns new grid')
+})
