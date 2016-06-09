@@ -3,36 +3,36 @@ import {buildGrid, resetGrid, changeCellState} from '../../src/js/grid.js'
 
 describe('Grid', () => {
   it('builds grid', () => {
-    const arrayOfArrays = [
+    const grid = [
       [null, null, null],
       [null, null, null],
       [null, null, null]
     ]
 
-    assert.deepEqual(buildGrid(3, 3), arrayOfArrays)
+    assert.deepEqual(buildGrid(3, 3), grid)
   })
 
   it('resets the grid', () => {
-    const arrayOfArrays = [
+    const grid = [
       [0, 0, 0],
       [0, 0, 0],
       [0, 0, 0]
     ]
 
-    assert.deepEqual(resetGrid(buildGrid(3, 3)), arrayOfArrays)
+    assert.deepEqual(resetGrid(buildGrid(3, 3)), grid)
   })
 
   it('changes a cells state from 0 to 1', () => {
-    const arrayOfArrays = [
+    const resultingGrid = [
       [0, 0, 0],
       [0, 1, 0],
       [0, 0, 0]
     ]
 
-    const grid = resetGrid(buildGrid(3, 3))
-    const newGrid = changeCellState(grid, [1, 1])
+    const oldGrid = resetGrid(buildGrid(3, 3))
+    const newGrid = changeCellState(oldGrid, [1, 1])
 
-    assert.deepEqual(newGrid, arrayOfArrays)
+    assert.deepEqual(newGrid, resultingGrid)
   })
 
   it('changes cells state from 1 to 0', function () {
