@@ -16,6 +16,31 @@ export const changeCellState = (grid, pos) => {
   ]
 }
 
-export const getNeighbors = (grid, position) => {
+export const getNeighbors = (grid, pos) => {
+  const rowAbove = pos[0] - 1
+  const col = pos[1]
+  const colRight = pos[1] - 1
+  const colLeft = pos[1] + 1
 
+  const neighborsAbove = [
+    grid[rowAbove][colRight],
+    grid[rowAbove][col],
+    grid[rowAbove][colLeft]
+  ]
+
+  const row = pos[0]
+  const neighborsNext = [
+    grid[row][colRight],
+    grid[row][colLeft]
+  ]
+
+  const rowBelow = pos[0] + 1
+
+  const neighborsBelow = [
+    grid[rowBelow][col],
+    grid[rowBelow][colRight],
+    grid[rowBelow][colLeft]
+  ]
+
+  return [...neighborsAbove, ...neighborsNext, ...neighborsBelow]
 }

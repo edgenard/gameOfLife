@@ -59,7 +59,7 @@ describe('Grid', () => {
 })
 
 describe('Getting neighbors', () => {
-  it('gets the neigbors of centeral cell', () => {
+  it('gets the neigbors of central cell', () => {
     const oldGrid = [
       [1, 0, 1],
       [0, 1, 0],
@@ -69,5 +69,17 @@ describe('Getting neighbors', () => {
     const neighbors = [1, 0, 1, 0, 0, 0, 0, 0]
 
     assert.deepEqual(getNeighbors(oldGrid, [1, 1]), neighbors)
+  })
+
+  it('gets the neighbors of top right cell', () => {
+    const oldGrid = [
+      [1, 0, 1],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+
+    const neighbors = [0, 0, 1]
+
+    assert.deepEqual(getNeighbors(oldGrid, [0, 0]), neighbors)
   })
 })
