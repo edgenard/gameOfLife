@@ -15,3 +15,7 @@ export const changeCellState = (grid, pos) => {
     ...grid.slice(row + 1)
   ]
 }
+
+export const getNeighbors = (grid, position) => {
+
+}
