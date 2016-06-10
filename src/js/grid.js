@@ -128,3 +128,22 @@ export const getNeighbors = (grid, pos) => {
 
   return [...neighborsAbove, ...neighborsNext, ...neighborsBelow]
 }
+
+export const nextGen = (oldGrid) => {
+  let newGrid = []
+
+  oldGrid.forEach((row, rIdx) => {
+    newGrid.push([])
+    row.forEach((cell, cIdx) => {
+      let neighbors = getNeighbors(oldGrid, [rIdx, cIdx])
+      let sum = neighbors.reduce((a, b) => a + b)
+      if (sum < 2) {
+        newGrid[rIdx][cIdx] = 0
+      } else {
+        newGrid[rIdx][cIdx] = cell
+      }
+    })
+  })
+
+  return newGrid
+}

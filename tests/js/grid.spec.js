@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {buildGrid, resetGrid, changeCellState, getNeighbors} from '../../src/js/grid.js'
+import {buildGrid, resetGrid, changeCellState, getNeighbors, nextGen} from '../../src/js/grid.js'
 
 describe('Grid', () => {
   it('builds grid', () => {
@@ -165,5 +165,39 @@ describe('Getting neighbors', () => {
     const neighbors = [0, 1, 1, 0, 0]
 
     assert.deepEqual(getNeighbors(oldGrid, [1, 2]), neighbors)
+  })
+})
+
+describe('Next Generation', () => {
+  it('live cell with less than 2 dies', () => {
+    const oldGrid = [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+
+    const newGrid = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
+
+    assert.deepEqual(nextGen(oldGrid), newGrid)
+  })
+
+  it('live cell with 2 lives', () => {
+    const oldGrid = [
+      [1, 0, 0],
+      [0, 1, 0],
+      [0, 0, 1]
+    ]
+
+    const newGrid = [
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+
+    assert.deepEqual(nextGen(oldGrid), newGrid)
   })
 })
