@@ -2,7 +2,7 @@ import {assert} from 'chai'
 import {gameOfLife} from '../../src/js/life.js'
 
 describe('Game of Life', () => {
-  let newGame, section, clearButton
+  let newGame, section, clearButton, playButton
   beforeEach(() => {
     section = document.createElement('section')
     section.setAttribute('id', 'gridContainer')
@@ -13,6 +13,7 @@ describe('Game of Life', () => {
     })
     let controls = setupControls()
     clearButton = controls.clearButton
+    playButton = controls.playButton
   })
 
   afterEach(() => {
@@ -62,6 +63,24 @@ describe('Game of Life', () => {
     clearButton.click()
 
     assert.deepEqual(newGame.getGrid(), grid)
+  })
+
+  it('clicking start computes the next grid', () => {
+    newGame.addClickCellHandler('.cell')
+    document.getElementById('0_1').click()
+    document.getElementById('1_0').click()
+    document.getElementById('1_1').click()
+
+    const newGrid = [
+      [1, 1, 0],
+      [1, 1, 0],
+      [0, 0, 0]
+    ]
+
+    newGame.addStartButtonHandler('#start')
+    playButton.click()
+
+    assert.deepEqual(newGame.getGrid(), newGrid)
   })
 })
 
