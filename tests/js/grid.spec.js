@@ -200,4 +200,20 @@ describe('Next Generation', () => {
 
     assert.deepEqual(nextGen(oldGrid), newGrid)
   })
+
+  it('live cell with 3 lives', () => {
+    const oldGrid = [
+      [1, 0, 1],
+      [0, 1, 0],
+      [0, 0, 1]
+    ]
+
+    const newGrid = [
+      [0, 0, 0],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+
+    assert.deepEqual(nextGen(oldGrid), newGrid)
+  })
 })
