@@ -264,4 +264,20 @@ describe('Next Generation', () => {
 
     assert.deepEqual(nextGen(oldGrid), newGrid)
   })
+
+  it('dead cell with more than 3 stays dead', () => {
+    const oldGrid = [
+      [1, 0, 1],
+      [0, 0, 0],
+      [1, 0, 1]
+    ]
+
+    const newGrid = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
+
+    assert.deepEqual(nextGen(oldGrid), newGrid)
+  })
 })
