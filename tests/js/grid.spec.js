@@ -142,4 +142,28 @@ describe('Getting neighbors', () => {
 
     assert.deepEqual(getNeighbors(oldGrid, [2, 1]), neighbors)
   })
+
+  it('gets the neighbors of right edge cell', () => {
+    const oldGrid = [
+      [1, 0, 1],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+
+    const neighbors = [1, 0, 1, 0, 0]
+
+    assert.deepEqual(getNeighbors(oldGrid, [1, 0]), neighbors)
+  })
+
+  it('gets the neighbors of left edge cell', () => {
+    const oldGrid = [
+      [1, 0, 1],
+      [0, 1, 0],
+      [0, 0, 0]
+    ]
+
+    const neighbors = [0, 1, 1, 0, 0]
+
+    assert.deepEqual(getNeighbors(oldGrid, [1, 2]), neighbors)
+  })
 })

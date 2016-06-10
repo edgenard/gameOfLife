@@ -85,6 +85,18 @@ export const getNeighbors = (grid, pos) => {
       grid[row][colLeft]
     ]
     neighborsBelow = []
+  } else if (colRight < 0) { // right edge
+    neighborsAbove = [
+      grid[rowAbove][col],
+      grid[rowAbove][colLeft]
+    ]
+    neighborsNext = [
+      grid[row][colLeft]
+    ]
+    neighborsBelow = [
+      grid[rowBelow][col],
+      grid[rowBelow][colLeft]
+    ]
   } else {
     neighborsAbove = [
       grid[rowAbove][colRight],
