@@ -203,14 +203,14 @@ describe('Next Generation', () => {
 
   it('live cell with 3 lives', () => {
     const oldGrid = [
-      [1, 0, 1],
-      [0, 1, 0],
-      [0, 0, 1]
+      [1, 1, 0],
+      [1, 1, 0],
+      [0, 0, 0]
     ]
 
     const newGrid = [
-      [0, 0, 0],
-      [0, 1, 0],
+      [1, 1, 0],
+      [1, 1, 0],
       [0, 0, 0]
     ]
 
@@ -219,15 +219,15 @@ describe('Next Generation', () => {
 
   it('live cell with more than 3 dies', () => {
     const oldGrid = [
-      [1, 0, 1],
-      [0, 1, 0],
-      [1, 0, 1]
+      [1, 1, 1],
+      [1, 1, 1],
+      [1, 1, 1]
     ]
 
     const newGrid = [
+      [1, 0, 1],
       [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0]
+      [1, 0, 1]
     ]
 
     assert.deepEqual(nextGen(oldGrid), newGrid)
@@ -243,6 +243,22 @@ describe('Next Generation', () => {
     const newGrid = [
       [0, 0, 0],
       [0, 0, 0],
+      [0, 0, 0]
+    ]
+
+    assert.deepEqual(nextGen(oldGrid), newGrid)
+  })
+
+  it('dead cell with 3 is born', () => {
+    const oldGrid = [
+      [1, 0, 0],
+      [0, 0, 0],
+      [1, 0, 1]
+    ]
+
+    const newGrid = [
+      [0, 0, 0],
+      [0, 1, 0],
       [0, 0, 0]
     ]
 

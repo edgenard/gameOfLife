@@ -137,8 +137,10 @@ export const nextGen = (oldGrid) => {
     row.forEach((cell, cIdx) => {
       let neighbors = getNeighbors(oldGrid, [rIdx, cIdx])
       let sum = neighbors.reduce((a, b) => a + b)
-      if (sum < 2 || sum > 3) {
+      if (cell === 1 && (sum < 2 || sum > 3)) {
         newGrid[rIdx][cIdx] = 0
+      } else if (cell === 0 && sum === 3) {
+        newGrid[rIdx][cIdx] = 1
       } else {
         newGrid[rIdx][cIdx] = cell
       }
