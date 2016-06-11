@@ -103,6 +103,31 @@ describe('Game of Life', () => {
       assert.isTrue(cell3.classList.contains('alive'))
       assert.isTrue(cell4.classList.contains('alive'))
     })
+
+    it('table keeps updating', function (done) {
+      this.timeout(3000)
+      const playButton = document.querySelector('#start')
+      const cell1 = document.getElementById('0_1')
+      cell1.click()
+      const cell2 = document.getElementById('1_1')
+      cell2.click()
+      const cell3 = document.getElementById('2_1')
+      cell3.click()
+      const cell4 = document.getElementById('1_0')
+      const cell5 = document.getElementById('1_2')
+
+      playButton.click()
+
+      setTimeout(() => {
+        assert.isTrue(cell1.classList.contains('alive'))
+        assert.isTrue(cell3.classList.contains('alive'))
+        assert.isTrue(cell2.classList.contains('alive'))
+
+        assert.isFalse(cell4.classList.contains('alive'))
+        assert.isFalse(cell5.classList.contains('alive'))
+        done()
+      }, 1000)
+    })
   })
 })
 

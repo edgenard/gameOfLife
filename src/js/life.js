@@ -39,6 +39,10 @@ export const gameOfLife = ({size, container}) => {
         playButtonHandler(playButton)
         grid = nextGen(grid)
         table = updateTable(table, grid)
+        setInterval(() => {
+          grid = nextGen(grid)
+          table = updateTable(table, grid)
+        }, 1000)
       })
     }
   }
