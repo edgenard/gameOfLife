@@ -1,13 +1,3 @@
-Next Steps
-
-drawTable function now draws a representation of the grid each time its called and attaches it to parent element
-
-What does clicking on a cell do now?
- - Give a new grid with the cell updated from 0 to 1
- - drawTable using new Grid(This means that drawTable needs to be changed to set a cell as alive or dead based on the grid and maybe instead of redrawing the whole table it should just redraw that specific cell, in that case I would update the grid but not redraw the table, just redraw a cell)
-  - Right now after clicking a cell the steps feel like
-    1. get new grid with cell toggled on or off
-    2. Update the individual cell in the html with a different class
-      to show that it is has been toggled(It seems this would deviate from the idea of having the view be direct representation of the model. Would just removing the old table view and redrawing it be a problem).
-
-When computing the next generation should a new grid be created each time we run into a cell whose state will change or collect all the cells that will change state and then update all the cells at once? This problem seems to exist whether or not I get a new grid anytime a cell changes or mutate the grid.
+ - Clicking playButton a second time must pause
+ - Clicking clear must remove the interval
+ 
