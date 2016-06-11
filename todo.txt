@@ -1,3 +1,3 @@
- - Clicking playButton a second time must pause
+ - Clicking playButton a second time must pause interval
+ - Clicking a third time must restart interval
  - Clicking clear must remove the interval
- 
