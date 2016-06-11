@@ -38,6 +38,7 @@ export const gameOfLife = ({size, container}) => {
       playButton.addEventListener('click', () => {
         playButtonHandler(playButton)
         grid = nextGen(grid)
+        table = updateTable(table, grid)
       })
     }
   }

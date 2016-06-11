@@ -85,6 +85,24 @@ describe('Game of Life', () => {
 
       assert.deepEqual(newGame.getGrid(), newGrid)
     })
+
+    it('clicking start updates the table', () => {
+      const playButton = document.querySelector('#start')
+      const cell1 = document.getElementById('0_0')
+      cell1.click()
+      const cell2 = document.getElementById('0_1')
+      cell2.click()
+      const cell3 = document.getElementById('1_0')
+      cell3.click()
+      const cell4 = document.getElementById('1_1')
+
+      playButton.click()
+
+      assert.isFalse(cell1.classList.contains('alive'))
+      assert.isFalse(cell2.classList.contains('alive'))
+      assert.isFalse(cell3.classList.contains('alive'))
+      assert.isTrue(cell4.classList.contains('alive'))
+    })
   })
 })
 
