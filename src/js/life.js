@@ -34,10 +34,10 @@ export const gameOfLife = ({size, container}) => {
     },
     addStartButtonHandler (playSelector) {
       let playButton = document.querySelector(playSelector)
+
       playButton.addEventListener('click', () => {
         playButtonHandler(playButton)
         grid = nextGen(grid)
-        console.log(grid)
       })
     }
   }

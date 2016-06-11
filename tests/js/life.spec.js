@@ -2,7 +2,7 @@ import {assert} from 'chai'
 import {gameOfLife} from '../../src/js/life.js'
 
 describe('Game of Life', () => {
-  let newGame, section, clearButton, playButton
+  let newGame, section
   beforeEach(() => {
     section = document.createElement('section')
     section.setAttribute('id', 'gridContainer')
@@ -11,9 +11,6 @@ describe('Game of Life', () => {
       size: {rows: 3, cols: 3},
       container: section
     })
-    let controls = setupControls()
-    clearButton = controls.clearButton
-    playButton = controls.playButton
   })
 
   afterEach(() => {
@@ -36,51 +33,58 @@ describe('Game of Life', () => {
     assert.isNotNull(table)
   })
 
-  it('clicking a cell updates the grid', () => {
-    newGame.addClickCellHandler('.cell')
-    const cell = document.getElementById('1_1')
-    cell.click()
+  describe('Clicking cells and controls', () => {
+    beforeEach(() => {
+      setupControls()
+      newGame.addClickCellHandler('.cell')
+      newGame.addClearButtonHandler('#clear', '#start')
+      newGame.addStartButtonHandler('#start')
+    })
 
-    const grid = [
-      [0, 0, 0],
-      [0, 1, 0],
-      [0, 0, 0]
-    ]
+    it('clicking a cell updates the grid', () => {
+      const cell = document.getElementById('1_1')
+      const grid = [
+        [0, 0, 0],
+        [0, 1, 0],
+        [0, 0, 0]
+      ]
 
-    assert.deepEqual(newGame.getGrid(), grid)
-  })
+      cell.click()
 
-  it('clicking clear resets the grid', () => {
-    newGame.addClearButtonHandler('#clear', '#start')
-    const cell = document.getElementById('1_1')
-    const grid = [
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0]
-    ]
+      assert.deepEqual(newGame.getGrid(), grid)
+    })
 
-    cell.click()
-    clearButton.click()
+    it('clicking clear resets the grid', () => {
+      const cell = document.getElementById('1_1')
+      const clearButton = document.querySelector('#clear')
+      const grid = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ]
 
-    assert.deepEqual(newGame.getGrid(), grid)
-  })
+      cell.click()
+      clearButton.click()
 
-  it('clicking start computes the next grid', () => {
-    newGame.addClickCellHandler('.cell')
-    document.getElementById('0_1').click()
-    document.getElementById('1_0').click()
-    document.getElementById('1_1').click()
+      assert.deepEqual(newGame.getGrid(), grid)
+    })
 
-    const newGrid = [
-      [1, 1, 0],
-      [1, 1, 0],
-      [0, 0, 0]
-    ]
+    it('clicking start computes the next grid', () => {
+      const playButton = document.querySelector('#start')
+      document.getElementById('0_1').click()
+      document.getElementById('1_0').click()
+      document.getElementById('1_1').click()
 
-    newGame.addStartButtonHandler('#start')
-    playButton.click()
+      const newGrid = [
+        [1, 1, 0],
+        [1, 1, 0],
+        [0, 0, 0]
+      ]
 
-    assert.deepEqual(newGame.getGrid(), newGrid)
+      playButton.click()
+
+      assert.deepEqual(newGame.getGrid(), newGrid)
+    })
   })
 })
 
