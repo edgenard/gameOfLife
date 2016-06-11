@@ -129,6 +129,10 @@ export const getNeighbors = (grid, pos) => {
   return [...neighborsAbove, ...neighborsNext, ...neighborsBelow]
 }
 
+export const isGridEmpty = (grid) => {
+  return grid.every((row) => row.every((cell) => cell === 0))
+}
+
 export const nextGen = (oldGrid) => {
   let newGrid = []
 

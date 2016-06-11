@@ -1,5 +1,5 @@
 import {assert} from 'chai'
-import {buildGrid, resetGrid, changeCellState, getNeighbors, nextGen} from '../../src/js/grid.js'
+import {buildGrid, resetGrid, changeCellState, getNeighbors, nextGen, isGridEmpty} from '../../src/js/grid.js'
 
 describe('Grid', () => {
   it('builds grid', () => {
@@ -279,5 +279,29 @@ describe('Next Generation', () => {
     ]
 
     assert.deepEqual(nextGen(oldGrid), newGrid)
+  })
+
+  it('returns true if grid is empty', () => {
+    const grid = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0]
+    ]
+
+    assert.isTrue(isGridEmpty(grid))
+  })
+
+  it('returns false if grid not empty', () => {
+    const grid = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 1]
+    ]
+
+    assert.isFalse(isGridEmpty(grid))
+  })
+
+  it('randomly fills half of empty grid', () => {
+
   })
 })

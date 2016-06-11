@@ -98,9 +98,9 @@ describe('Game of Life', () => {
 
       playButton.click()
 
-      assert.isFalse(cell1.classList.contains('alive'))
-      assert.isFalse(cell2.classList.contains('alive'))
-      assert.isFalse(cell3.classList.contains('alive'))
+      assert.isTrue(cell1.classList.contains('alive'))
+      assert.isTrue(cell2.classList.contains('alive'))
+      assert.isTrue(cell3.classList.contains('alive'))
       assert.isTrue(cell4.classList.contains('alive'))
     })
   })

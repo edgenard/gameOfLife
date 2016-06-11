@@ -62,7 +62,7 @@ describe('Table', () => {
   })
 
   describe('Updating Table', () => {
-    it('updates cells based on grid', () => {
+    it('live cells are updated table', () => {
       const grid = [
         [0, 0, 0],
         [0, 0, 0],
@@ -82,6 +82,28 @@ describe('Table', () => {
       updateTable(table, newGrid)
 
       assert.isTrue(cell.classList.contains('alive'))
+    })
+
+    it('dead cells are updated in new table', () => {
+      const grid = [
+        [1, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ]
+      let table = drawTable({
+        parent: section,
+        grid
+      })
+      const newGrid = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]
+      ]
+
+      updateTable(table, newGrid)
+      const cell = document.getElementById('0_0')
+
+      assert.isFalse(cell.classList.contains('alive'))
     })
   })
 })

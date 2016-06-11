@@ -28,7 +28,7 @@ export const updateTable = (table, newGrid) => {
       if (cell === 1 && td.classList.contains('dead')) {
         td.classList.remove('dead')
         td.classList.add('alive')
-      } else if (td.classList.contains('alive')) {
+      } else if (cell === 0 && td.classList.contains('alive')) {
         td.classList.remove('alive')
         td.classList.add('dead')
       }
