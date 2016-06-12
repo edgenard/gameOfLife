@@ -1,3 +1,7 @@
  - Clicking playButton a second time must pause interval
+  I think the best way to do this would be to use a spy and
+  check that clearInterval is called
  - Clicking a third time must restart interval
+    spy to check that setInterval is called
  - Clicking clear must remove the interval
+    spy to check that clearInterval is called. 
