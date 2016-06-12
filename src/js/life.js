@@ -7,6 +7,7 @@ export const gameOfLife = ({size, container}) => {
   let grid = resetGrid(buildGrid(rows, cols))
   let table = drawTable({parent: container, grid})
   let playing = false
+  let intervalId
   return {
     isPlaying: () => playing,
     getGrid: () => grid,
@@ -32,6 +33,7 @@ export const gameOfLife = ({size, container}) => {
         clearButtonHandler(clearButton, playButton)
         grid = resetGrid(grid)
         table = updateTable(table, grid)
+        clearInterval(intervalId)
       })
     },
     addStartButtonHandler (playSelector) {
@@ -42,10 +44,14 @@ export const gameOfLife = ({size, container}) => {
         playButtonHandler(playButton)
         grid = nextGen(grid)
         table = updateTable(table, grid)
-        setInterval(() => {
-          grid = nextGen(grid)
-          table = updateTable(table, grid)
-        }, 1000)
+        if (!playing && intervalId) {
+          clearInterval(intervalId)
+        } else {
+          intervalId = setInterval(() => {
+            grid = nextGen(grid)
+            table = updateTable(table, grid)
+          }, 1000)
+        }
       })
     }
   }
