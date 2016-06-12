@@ -31,6 +31,7 @@
     "karma-mocha": "^1.0.1",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.3",
+    "sinon": "^1.17.4",
     "standard": "^7.1.1",
     "standard-loader": "^4.0.0",
     "style-loader": "^0.13.1",
