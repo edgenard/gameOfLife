@@ -69,6 +69,14 @@ describe('Game of Life', () => {
       assert.deepEqual(newGame.getGrid(), grid)
     })
 
+    it('clicking clear sets isPlaying to false', () => {
+      const clearButton = document.querySelector('#clear')
+
+      clearButton.click()
+
+      assert.isFalse(newGame.isPlaying())
+    })
+
     it('clicking start computes the next grid', () => {
       const playButton = document.querySelector('#start')
       document.querySelector('[data="0_1"]').click()
@@ -102,6 +110,23 @@ describe('Game of Life', () => {
       assert.isTrue(cell2.classList.contains('alive'))
       assert.isTrue(cell3.classList.contains('alive'))
       assert.isTrue(cell4.classList.contains('alive'))
+    })
+
+    it('clicking start sets isPlaying to true', () => {
+      const playButton = document.querySelector('#start')
+
+      playButton.click()
+
+      assert.isTrue(newGame.isPlaying())
+    })
+
+    it('clicking start twice sets isPlaying to false', () => {
+      const playButton = document.querySelector('#start')
+
+      playButton.click()
+      playButton.click()
+
+      assert.isFalse(newGame.isPlaying())
     })
 
     it('table keeps updating', function (done) {

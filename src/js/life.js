@@ -6,8 +6,9 @@ export const gameOfLife = ({size, container}) => {
   const {rows, cols} = size
   let grid = resetGrid(buildGrid(rows, cols))
   let table = drawTable({parent: container, grid})
-
+  let playing = false
   return {
+    isPlaying: () => playing,
     getGrid: () => grid,
     addClickCellHandler (selector) {
       let cells = document.querySelectorAll(selector)
@@ -27,6 +28,7 @@ export const gameOfLife = ({size, container}) => {
       let clearButton = document.querySelector(clearSelector)
       let playButton = document.querySelector(playSelector)
       clearButton.addEventListener('click', () => {
+        playing = false
         clearButtonHandler(clearButton, playButton)
         grid = resetGrid(grid)
         table = updateTable(table, grid)
@@ -36,6 +38,7 @@ export const gameOfLife = ({size, container}) => {
       let playButton = document.querySelector(playSelector)
 
       playButton.addEventListener('click', () => {
+        playing = playing === false
         playButtonHandler(playButton)
         grid = nextGen(grid)
         table = updateTable(table, grid)
