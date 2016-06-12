@@ -8,7 +8,7 @@ export const drawTable = ({grid, parent}) => {
       let td = document.createElement('td')
       td.classList.add('dead')
       td.classList.add('cell')
-      td.setAttribute('id', `${rindex}_${cindex}`)
+      td.setAttribute('data', `${rindex}_${cindex}`)
       tr.appendChild(td)
     })
   })

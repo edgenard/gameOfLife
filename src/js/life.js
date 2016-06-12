@@ -17,7 +17,7 @@ export const gameOfLife = ({size, container}) => {
           'click',
           function (e) {
             clickCellHandler(cell)
-            const pos = cell.getAttribute('id').split('_').map(n => Number(n))
+            const pos = cell.getAttribute('data').split('_').map(n => Number(n))
             grid = changeCellState(grid, pos)
           }
         )

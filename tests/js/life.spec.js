@@ -42,7 +42,7 @@ describe('Game of Life', () => {
     })
 
     it('clicking a cell updates the grid', () => {
-      const cell = document.getElementById('1_1')
+      const cell = document.querySelector('[data="1_1"]')
       const grid = [
         [0, 0, 0],
         [0, 1, 0],
@@ -55,7 +55,7 @@ describe('Game of Life', () => {
     })
 
     it('clicking clear resets the grid', () => {
-      const cell = document.getElementById('1_1')
+      const cell = document.querySelector('[data="1_1"]')
       const clearButton = document.querySelector('#clear')
       const grid = [
         [0, 0, 0],
@@ -71,9 +71,9 @@ describe('Game of Life', () => {
 
     it('clicking start computes the next grid', () => {
       const playButton = document.querySelector('#start')
-      document.getElementById('0_1').click()
-      document.getElementById('1_0').click()
-      document.getElementById('1_1').click()
+      document.querySelector('[data="0_1"]').click()
+      document.querySelector('[data="1_0"]').click()
+      document.querySelector('[data="1_1"]').click()
 
       const newGrid = [
         [1, 1, 0],
@@ -88,13 +88,13 @@ describe('Game of Life', () => {
 
     it('clicking start updates the table', () => {
       const playButton = document.querySelector('#start')
-      const cell1 = document.getElementById('0_0')
+      const cell1 = document.querySelector('[data="0_0"]')
       cell1.click()
-      const cell2 = document.getElementById('0_1')
+      const cell2 = document.querySelector('[data="0_1"]')
       cell2.click()
-      const cell3 = document.getElementById('1_0')
+      const cell3 = document.querySelector('[data="1_0"]')
       cell3.click()
-      const cell4 = document.getElementById('1_1')
+      const cell4 = document.querySelector('[data="1_1"]')
 
       playButton.click()
 
@@ -107,14 +107,14 @@ describe('Game of Life', () => {
     it('table keeps updating', function (done) {
       this.timeout(3000)
       const playButton = document.querySelector('#start')
-      const cell1 = document.getElementById('0_1')
+      const cell1 = document.querySelector('[data="0_1"]')
       cell1.click()
-      const cell2 = document.getElementById('1_1')
+      const cell2 = document.querySelector('[data="1_1"]')
       cell2.click()
-      const cell3 = document.getElementById('2_1')
+      const cell3 = document.querySelector('[data="2_1"]')
       cell3.click()
-      const cell4 = document.getElementById('1_0')
-      const cell5 = document.getElementById('1_2')
+      const cell4 = document.querySelector('[data="1_0"]')
+      const cell5 = document.querySelector('[data="1_2"]')
 
       playButton.click()
 

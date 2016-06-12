@@ -53,12 +53,12 @@ describe('Table', () => {
     assert.isTrue(cell.classList.contains('cell'))
   })
 
-  it('cell has the id of row and col', () => {
+  it('cell has the data attr of row and col', () => {
     drawTable({parent: section, grid: buildGrid(3, 3)})
     const table = document.querySelector('table')
     const cell = table.children[0].children[0]
 
-    assert.equal(cell.getAttribute('id'), '0_0')
+    assert.equal(cell.getAttribute('data'), '0_0')
   })
 
   describe('Updating Table', () => {
@@ -77,7 +77,7 @@ describe('Table', () => {
         [0, 1, 0],
         [0, 0, 0]
       ]
-      const cell = document.getElementById('1_1')
+      const cell = document.querySelector('[data="1_1"]')
 
       updateTable(table, newGrid)
 
@@ -101,7 +101,7 @@ describe('Table', () => {
       ]
 
       updateTable(table, newGrid)
-      const cell = document.getElementById('0_0')
+      const cell = document.querySelector('[data="0_0"]')
 
       assert.isFalse(cell.classList.contains('alive'))
     })

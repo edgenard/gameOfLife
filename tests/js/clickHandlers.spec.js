@@ -11,7 +11,7 @@ describe('Clicking a cell', function () {
     document.body.appendChild(section)
     const grid = resetGrid(buildGrid(24, 24))
     drawTable({parent: section, grid})
-    cell = document.getElementById('11_11')
+    cell = document.querySelector('[data="11_11"]')
     cell.addEventListener('click', () => {
       clickCellHandler(cell)
     })
