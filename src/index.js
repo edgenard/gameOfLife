@@ -12,6 +12,7 @@ const initialize = () => {
   life.addClickCellHandler('.cell')
   life.addClearButtonHandler('#clear', '#start')
   life.addStartButtonHandler('#start')
+  life.addRandomButtonHandler('#random')
 }
 
 window.onload = initialize

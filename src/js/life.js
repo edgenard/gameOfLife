@@ -1,4 +1,4 @@
-import {buildGrid, resetGrid, changeCellState, nextGen} from './grid.js'
+import {buildGrid, resetGrid, changeCellState, nextGen, fillIn, isGridEmpty} from './grid.js'
 import {drawTable, updateTable} from './table.js'
 import {clickCellHandler, clearButtonHandler, playButtonHandler} from './clickHandlers.js'
 
@@ -42,7 +42,7 @@ export const gameOfLife = ({size, container}) => {
       playButton.addEventListener('click', () => {
         playing = playing === false
         playButtonHandler(playButton)
-        grid = nextGen(grid)
+        grid = isGridEmpty(grid) ? fillIn(grid) : nextGen(grid)
         table = updateTable(table, grid)
         if (!playing && intervalId) {
           clearInterval(intervalId)
@@ -52,6 +52,13 @@ export const gameOfLife = ({size, container}) => {
             table = updateTable(table, grid)
           }, 1000)
         }
+      })
+    },
+    addRandomButtonHandler (randomSelector) {
+      const randomButton = document.querySelector(randomSelector)
+      randomButton.addEventListener('click', () => {
+        grid = fillIn(grid)
+        updateTable(table, grid)
       })
     }
   }

@@ -1,7 +1,1 @@
- - Clicking playButton a second time must pause interval
-  I think the best way to do this would be to use a spy and
-  check that clearInterval is called
- - Clicking a third time must restart interval
-    spy to check that setInterval is called
- - Clicking clear must remove the interval
-    spy to check that clearInterval is called. 
+I'm thinking more and more that the UI tests in life.spec.js might be unnecessary. Because I've already tested that the table is representation of the grid in table.spec.js. Beyond the table being there and checking that clicking the buttons or cells call the right functions I'm not sure any other test is useful in life.spec.js. And since sinonjs doesn't seem to work well with webpack I don't think tests checking whether a function is called or not is worth it.
