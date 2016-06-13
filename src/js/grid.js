@@ -1,4 +1,3 @@
-
 export const buildGrid = (rows, cols) => {
   return new Array(rows).fill(new Array(cols).fill(null))
 }
@@ -131,6 +130,25 @@ export const getNeighbors = (grid, pos) => {
 
 export const isGridEmpty = (grid) => {
   return grid.every((row) => row.every((cell) => cell === 0))
+}
+
+export const fillIn = (grid) => {
+  let filledIn = 0
+  const goal = Math.ceil((grid.length * grid[0].length) / 2)
+
+  let newGrid = resetGrid(buildGrid(grid.length, grid[0].length))
+
+  while (filledIn < goal) {
+    let row = Math.floor(Math.random() * grid.length)
+    let col = Math.floor(Math.random() * grid[0].length)
+
+    if (newGrid[row][col] === 0) {
+      newGrid[row][col] = 1
+      filledIn += 1
+    }
+  }
+
+  return newGrid
 }
 
 export const nextGen = (oldGrid) => {
