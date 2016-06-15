@@ -1,3 +1,4 @@
 node_modules/fsevents/build/
 node_modules/fsevents/lib/
 dist
+npm-debug.log
