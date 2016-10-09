@@ -16,15 +16,17 @@ export const changeCellState = (grid, pos) => {
 }
 
 export const getNeighbors = (grid, pos) => {
+  // [3, 20]
+  // [ [], [], [], []]
   let neighborsAbove, neighborsNext, neighborsBelow
-  const rowAbove = pos[0] - 1
-  const row = pos[0]
-  const rowBelow = pos[0] + 1
-  const col = pos[1]
-  const colRight = pos[1] - 1
-  const colLeft = pos[1] + 1
+  const rowAbove = pos[0] - 1 // 2
+  const row = pos[0] // 3
+  const rowBelow = pos[0] + 1 // 4
+  const col = pos[1] // 20
+  const colRight = pos[1] + 1 // 21
+  const colLeft = pos[1] - 1 // 19
 
-  if (rowAbove < 0 && colRight < 0) { // top right
+  if (rowAbove < 0 && colRight >= grid[pos[0]].length) { // top right, no row above, no right column
     neighborsAbove = []
     neighborsNext = [
       grid[row][colLeft]
@@ -33,14 +35,15 @@ export const getNeighbors = (grid, pos) => {
       grid[rowBelow][col],
       grid[rowBelow][colLeft]
     ]
-  } else if (rowAbove < 0 && colLeft >= grid[pos[0]].length) { // top left
+  } else if (rowAbove < 0 && colLeft < 0) { // top left
     neighborsAbove = []
     neighborsNext = [
-      grid[row][colRight]
+      grid[row][colRight] // 0 or 1
     ]
     neighborsBelow = [
-      grid[rowBelow][colRight],
-      grid[rowBelow][col]
+      grid[rowBelow][col],
+      grid[rowBelow][colRight]
+
     ]
   } else if (rowAbove < 0) { // top cell
     neighborsAbove = []
@@ -53,7 +56,7 @@ export const getNeighbors = (grid, pos) => {
       grid[rowBelow][col],
       grid[rowBelow][colLeft]
     ]
-  } else if (colRight < 0 && rowBelow >= grid.length) { // bottom right
+  } else if (colRight >= grid[pos[0]].length && rowBelow >= grid.length) { // bottom right
     neighborsAbove = [
       grid[rowAbove][col],
       grid[rowAbove][colLeft]
@@ -62,7 +65,7 @@ export const getNeighbors = (grid, pos) => {
       grid[row][colLeft]
     ]
     neighborsBelow = []
-  } else if (colLeft >= grid[pos[0]].length && rowBelow >= grid.length) { // bottom left
+  } else if (colLeft < 0 && rowBelow >= grid.length) { // bottom left
     neighborsAbove = [
       grid[rowAbove][colRight],
       grid[rowAbove][col]
@@ -84,7 +87,7 @@ export const getNeighbors = (grid, pos) => {
       grid[row][colLeft]
     ]
     neighborsBelow = []
-  } else if (colRight < 0) { // right edge
+  } else if (colRight >= grid[pos[0]].length) { // right edge
     neighborsAbove = [
       grid[rowAbove][col],
       grid[rowAbove][colLeft]
@@ -96,7 +99,7 @@ export const getNeighbors = (grid, pos) => {
       grid[rowBelow][col],
       grid[rowBelow][colLeft]
     ]
-  } else if (colLeft >= grid[pos[0]].length) { // left edge
+  } else if (colLeft < 0) { // left edge
     neighborsAbove = [
       grid[rowAbove][colRight],
       grid[rowAbove][col]
@@ -124,7 +127,8 @@ export const getNeighbors = (grid, pos) => {
       grid[rowBelow][colLeft]
     ]
   }
-
+// [0, 1, 0], [ 1, 0], [1, 0, 0]
+// [0, 1, 0, 1, 0, 1, 0, 0]
   return [...neighborsAbove, ...neighborsNext, ...neighborsBelow]
 }
 
@@ -154,6 +158,16 @@ export const fillIn = (grid) => {
 export const nextGen = (oldGrid) => {
   let newGrid = []
 
+// //[ [0, 1, 0], [1, 0 ,0], [0, 0, 0]]
+// oldGrid.forEach(function(row, rowIndex){
+//   // [[]]
+//   row.forEach(function(cell, columnIndex){
+// // [ 1, 0, 1, 0, 1]
+//     neighbors.reduce(function(accumulator, value){
+//       return accumulator + value
+//     , 0)
+//   })
+// })
   oldGrid.forEach((row, rIdx) => {
     newGrid.push([])
     row.forEach((cell, cIdx) => {

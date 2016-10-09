@@ -41,8 +41,10 @@ export const gameOfLife = ({size, container}) => {
 
       playButton.addEventListener('click', () => {
         playing = playing === false
+        if (playButton.innerText === 'Start') {
+          grid = isGridEmpty(grid) ? fillIn(grid) : nextGen(grid)
+        }
         playButtonHandler(playButton)
-        grid = isGridEmpty(grid) ? fillIn(grid) : nextGen(grid)
         table = updateTable(table, grid)
         if (!playing && intervalId) {
           clearInterval(intervalId)
